@@ -1,6 +1,5 @@
 import { Avatar, Heading, Text } from '@ignite-ui/react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-// import { NextSeo } from 'next-seo'
 import { prisma } from '../../../lib/prisma'
 import { Container, UserHeader } from './styles'
 import { ScheduleForm } from './ScheduleForm'
@@ -37,14 +36,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const username = String(params?.username)
-
+  const formatedUsername = username.split(' ')[0].toLocaleLowerCase()
   const user = await prisma.user.findUnique({
     where: {
-      username,
+      username: formatedUsername,
     },
   })
 
   if (!user) {
+    console.log(user)
+    console.log(username.split(' ')[0])
     return {
       notFound: true,
     }
