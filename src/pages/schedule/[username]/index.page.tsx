@@ -36,16 +36,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const username = String(params?.username)
-  const formatedUsername = username.split(' ')[0].toLocaleLowerCase()
   const user = await prisma.user.findUnique({
     where: {
-      username: formatedUsername,
+      username,
     },
   })
 
   if (!user) {
-    console.log(user)
-    console.log(username.split(' ')[0])
     return {
       notFound: true,
     }
