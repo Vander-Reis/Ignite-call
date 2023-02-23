@@ -28,6 +28,20 @@ export const TimePicker = styled('div', {
   padding: '$6 $6 0',
   overflowY: 'scroll',
 
+  '&::-webkit-scrollbar': {
+    width: '12px',
+  },
+
+  '&::-webkit-scrollbar-track': {
+    background: '$gray800',
+  },
+
+  '&::-webkit-scrollbar-thumb': {
+    backgroundColor: '$gray600' /* color of the scroll thumb */,
+    borderRadius: '20px' /* roundness of the scroll thumb */,
+    border: '3px solid $gray800' /* creates padding around scroll thumb */,
+  },
+
   position: 'absolute',
   top: 0,
   bottom: 0,
