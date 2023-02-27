@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { prisma } from '../../../lib/prisma'
 import { Container, UserHeader } from './styles'
 import { ScheduleForm } from './ScheduleForm'
+import { NextSeo } from 'next-seo'
 
 interface ScheduleProps {
   user: {
@@ -15,6 +16,7 @@ interface ScheduleProps {
 export default function Schedule({ user }: ScheduleProps) {
   return (
     <>
+      <NextSeo title={`Agendar com ${user.name} | Ignite Call`} />
       <Container>
         <UserHeader>
           <Avatar src={user.avatarUrl} />
